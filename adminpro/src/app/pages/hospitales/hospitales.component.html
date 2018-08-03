@@ -1,0 +1,55 @@
+<div class="row animated fadeIn">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <input #buscador (keyup)="buscar(buscador.value)" type="text" class="form-control" placeholder="Buscar Hospital">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="text-right">
+          <button (click)="crear()" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
+            <i class="fa fa-plus"></i>
+            Crear Hospital</button>
+        </div>
+
+        <h3>Hospitales Registrados ( <small>{{hospitalService.totalHospitales}}</small>)</h3>
+
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th>Foto</th>
+            <th>Hospital</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let hospital of hospitales">
+              <th><img (click)="mostrarModal(hospital._id)" [src]="hospital.img | imagen:'hospital'"  alt="hospital" class="img-responsive img-50 pointer" /></th>
+              <th><input [(ngModel)]="hospital.nombre" name="nombre" type="text" placeholder="Nombre Hospital" class="form-control" ></th>
+              <th>
+                <button class="btn btn-primary" (click)="guardar(hospital)">
+                  <i class="fa fa-save"></i>
+                </button>
+                <button class="btn btn-danger" (click)="borrar(hospital)">
+                  <i class="fa fa-trash-o"></i>
+                </button>
+              </th>
+           </tr>
+          </tbody>
+        </table>
+        <button class="btn btn-secundary"  (click)="cambiarDesde(-5)">
+          Anteriores
+        </button>
+        <button class="btn btn-secundary"  (click)="cambiarDesde(5)">
+          Siguientes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

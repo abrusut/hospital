@@ -1,0 +1,5 @@
+<div class="row">
+    <div class="col-6" *ngFor="let grafico of graficos">
+        <app-grafico-dona [doughnutChartData]="grafico.data" [doughnutChartLabels]="grafico.labels" [doughnutChartType]="grafico.type" [leyenda]="grafico.leyenda" (chartClicked)="chartClicked($event)" (chartHovered)="chartHovered($event)"></app-grafico-dona>
+    </div>
+</div>
